@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'newsfeed';
-  mFeeds = ["1","2"];
-
+  
   constructor(
   ){}
 
