@@ -8,13 +8,20 @@ import { FeedService } from '../feed.service';
 })
 export class DashboardComponent implements OnInit {
 
-  mFeeds: any;
+  mFeeds: any[] = [];
 
 
   constructor(private feedService: FeedService) { }
 
   ngOnInit(): void {
-    this.mFeeds = this.feedService.getFeeds();
+    this.feedService.getFeeds().subscribe((f) => {
+      f.forEach((v, i) => {
+        setTimeout(() => {
+          this.mFeeds.push(v);
+        }, i * 2000);
+      });
+    })
   }
+
 
 }
