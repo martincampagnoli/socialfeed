@@ -1,16 +1,16 @@
 <mat-sidenav-container class="feed-container">
-    <mat-card class="feed-card" *ngFor="let feed of mFeeds">
+    <mat-card class="feed-card" *ngFor="let feed of mFeeds | async">
         <mat-card-header>
             <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/images/'+ test +'.png)'}" class="example-header-image"></div>
             <mat-card-title class="title">{{feed.author}} wrote:</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <p>
-              {{feed.description}} Testing description
+              {{feed.content}}
             </p>
         </mat-card-content>
         <mat-card-actions class="action-buttons">
-            <button mat-button color="primary"><mat-icon>thumb_up_alt</mat-icon> 12 Likes</button>
+            <button mat-button color="primary"><mat-icon>thumb_up_alt</mat-icon> {{feed.likes}} Likes</button>
             <button mat-button color="primary"><mat-icon>comment</mat-icon> Comments</button>
         </mat-card-actions>
     </mat-card>
