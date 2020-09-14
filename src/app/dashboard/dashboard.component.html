@@ -1,8 +1,9 @@
 <mat-sidenav-container class="feed-container">
     <mat-card class="feed-card slow-feed" *ngFor="let feed of mFeeds">
         <mat-card-header>
-            <div mat-card-avatar></div>
+            <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/empty.png)'}" class="feed-header-image"></div>
             <mat-card-title class="title">{{feed.author}} wrote:</mat-card-title>
+            <mat-card-subtitle>regular user</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <p>
