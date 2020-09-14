@@ -6,21 +6,34 @@ import { FeedService } from '../feed.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
 
-  mFeeds: any[] = [];
+  mFeeds: Array<any> = [];
+  counter = 10;
 
 
   constructor(private feedService: FeedService) { }
 
   ngOnInit(): void {
-    this.feedService.getFeeds().subscribe((f) => {
+    this.feedService.getFeeds().subscribe(f => {
+      f = f.filter(e =>  !this.containsObject(e, this.mFeeds) );
+
       f.forEach((v, i) => {
         setTimeout(() => {
           this.mFeeds.push(v);
         }, i * 2000);
       });
     })
+  }
+
+  containsObject(obj, list) {
+    return list.filter( e => e.id === obj.id).length > 0;
+  }
+
+  addPost(){
+    console.dir(this.counter);
+    this.feedService.addPost(this.counter++);
   }
 
 

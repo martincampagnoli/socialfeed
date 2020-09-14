@@ -14,7 +14,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 const mat = [
   MatMenuModule,
@@ -24,6 +30,9 @@ const mat = [
   MatIconModule,
   MatSidenavModule,
   MatListModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule
 ];
 
 const firebaseConfig = {
@@ -39,7 +48,8 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

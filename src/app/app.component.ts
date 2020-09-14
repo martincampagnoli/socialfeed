@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @Component({
@@ -7,9 +9,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'newsfeed';
+  title = 'socialfeed';
+  post: string;
   
-  constructor(
-  ){}
+  constructor(private dialog: MatDialog) {}
+
+    openDialog() {
+
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        this.dialog.open(DialogComponent, dialogConfig);
+    }
 
 }

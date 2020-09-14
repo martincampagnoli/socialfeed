@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'newsfeed'`, () => {
+  it(`should have as title 'socialfeed'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('newsfeed');
+    expect(app.title).toEqual('socialfeed');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('newsfeed app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('socialfeed app is running!');
   });
 });

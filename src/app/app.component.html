@@ -4,7 +4,7 @@
   <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>settings</mat-icon></button>
 </mat-toolbar>
 <mat-menu #appMenu="matMenu">
-    <button mat-menu-item> Post something </button>
+    <button mat-menu-item (click)="openDialog()"> Post something </button>
     <button mat-menu-item> Logout </button>
 </mat-menu>
 
