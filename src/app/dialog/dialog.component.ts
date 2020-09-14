@@ -1,27 +1,23 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+import { FeedService } from '../feed.service';
+
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent {
-  description:string;
+  postMessage: string;
 
-  constructor(
-      private dialogRef: MatDialogRef<DialogComponent>) {
-
-      
+  constructor(private dialogRef: MatDialogRef<DialogComponent>, private feedService: FeedService) {   
   }
 
   ngOnInit() {
   }
 
   save() {
+      this.feedService.addPost(this.postMessage);
       this.dialogRef.close();
   }
 
