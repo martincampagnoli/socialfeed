@@ -1,4 +1,4 @@
-.feed-spacer {
+  .feed-spacer {
     flex: 1 1 auto;
   }
   
@@ -41,5 +41,8 @@
 
   .slow-feed {
     animation: slowFeed 2s;
+  }
+  .empty-feed {
+    text-align: center;
   }
   

@@ -15,4 +15,11 @@
             <button mat-button color="primary" (click)="addPost()"><mat-icon>comment</mat-icon> Comments</button>
         </mat-card-actions>
     </mat-card>
+    <mat-card class="feed-card slow-feed" *ngIf="mFeeds.length == 0">
+        <mat-card-content>
+            <p class="empty-feed">
+              No news for now. Waiting for any thought to show up...
+            </p>
+        </mat-card-content>
+    </mat-card>
 </mat-sidenav-container>
