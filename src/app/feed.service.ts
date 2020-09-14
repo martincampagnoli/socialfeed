@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,17 @@ export class FeedService {
   }
 
   addPost(content){
+    const currentDate = new Date();
+    const cValue = formatDate(currentDate, 'dd-MM-yyyy', 'en-US');
     const itemRef = this.db.list('feeds');
-    let number = Math.random();
+    const number = Math.random();
+
     itemRef.push({
       "id": number,
       "author": "admin" + number,
       "content": content,
-      "likes": 27,
-      "created": "10-10-2020",
-      "comments": [{
-      }]
+      "likes": 0,
+      "created": cValue
   });
   }
 }

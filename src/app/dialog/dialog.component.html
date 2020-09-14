@@ -8,5 +8,5 @@
 
 <div mat-dialog-actions>
   <button mat-button class="mat-raised-button" (click)="close()"><mat-icon>close</mat-icon> Close</button>
-  <button mat-button class="mat-raised-button mat-primary" (click)="save()" cdkFocusInitial>Send <mat-icon>east</mat-icon></button>
+  <button mat-button class="mat-raised-button mat-primary" [disabled]="!postMessage" (click)="save()" cdkFocusInitial>Send <mat-icon>east</mat-icon></button>
 </div>

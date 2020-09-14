@@ -36,5 +36,9 @@ export class DashboardComponent implements OnInit {
     this.feedService.addPost(this.counter++);
   }
 
+  toggle(feed) {
+    feed.show = !feed.show;
+  }
+
 
 }

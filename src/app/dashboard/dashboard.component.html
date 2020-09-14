@@ -1,25 +1,39 @@
-<mat-sidenav-container class="feed-container">
-    <mat-card class="feed-card slow-feed" *ngFor="let feed of mFeeds.slice().reverse()">
-        <mat-card-header>
-            <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/empty.png)'}" class="feed-header-image"></div>
-            <mat-card-title class="title">{{feed.author}} wrote:</mat-card-title>
-            <mat-card-subtitle>regular user</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>
-              {{feed.content}}
-            </p>
-        </mat-card-content>
-        <mat-card-actions class="action-buttons">
-            <button mat-button color="primary"><mat-icon>thumb_up_alt</mat-icon> {{feed.likes}} Likes</button>
-            <button mat-button color="primary" (click)="addPost()"><mat-icon>comment</mat-icon> Comments</button>
-        </mat-card-actions>
-    </mat-card>
-    <mat-card class="feed-card slow-feed" *ngIf="mFeeds.length == 0">
-        <mat-card-content>
-            <p class="empty-feed">
-              No news for now. Waiting for any thought to show up...
-            </p>
-        </mat-card-content>
-    </mat-card>
-</mat-sidenav-container>
+    <div *ngFor="let feed of mFeeds.slice().reverse()">
+        <div>
+            <mat-card class="feed-card slow-feed" >
+            <mat-card-header>
+                <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/empty.png)'}" class="feed-header-image"></div>
+                <mat-card-title class="title">{{feed.author}} wrote:</mat-card-title>
+                <mat-card-subtitle>regular user</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                {{feed.content}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions class="action-buttons">
+                <button mat-button color="primary"><mat-icon>thumb_up_alt</mat-icon> {{feed.likes}} Likes</button>
+                <button mat-button color="primary" (click)="toggle(feed)"><mat-icon>comment</mat-icon> 
+                    <span *ngIf="feed.comments"> {{feed.comments.length}}</span> Comments</button>
+            </mat-card-actions>
+            </mat-card>
+            <mat-card class="feed-card slow-feed" *ngIf="mFeeds.length == 0">
+                <mat-card-content>
+                    <p class="empty-feed">
+                    No news for now. Waiting for any thought to show up...
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="comment-section">
+            <mat-list dense *ngIf="feed.show">
+                <mat-list-item *ngFor="let comment of feed.comments" class="comment-item">
+                <mat-icon matListIcon>comments</mat-icon>
+                <h3 matLine> <b>{{comment.commentAuthor}}</b> </h3>
+                <p matLine>
+                    <span> {{comment.commentContent}}</span>
+                </p>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
