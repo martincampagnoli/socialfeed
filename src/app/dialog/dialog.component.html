@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Write your thoughts</h1>
+<h1 mat-dialog-title>Write your thoughts <mat-icon>connect_without_contact</mat-icon></h1>
 
 <div mat-dialog-content>
   <mat-form-field>
@@ -7,6 +7,6 @@
 </div>
 
 <div mat-dialog-actions>
-  <button mat-button class="mat-raised-button" (click)="close()">Close</button>
-  <button mat-button class="mat-raised-button mat-primary" (click)="save()" cdkFocusInitial>Send to feed</button>
+  <button mat-button class="mat-raised-button" (click)="close()"><mat-icon>close</mat-icon> Close</button>
+  <button mat-button class="mat-raised-button mat-primary" (click)="save()" cdkFocusInitial>Send <mat-icon>east</mat-icon></button>
 </div>

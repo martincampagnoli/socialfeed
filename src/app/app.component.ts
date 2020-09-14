@@ -20,7 +20,7 @@ export class AppComponent {
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        dialogConfig.width = '250px';
+        dialogConfig.width = '260px';
 
         this.dialog.open(DialogComponent, dialogConfig);
     }
