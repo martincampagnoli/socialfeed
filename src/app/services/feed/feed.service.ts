@@ -38,7 +38,6 @@ export class FeedService {
     }
     
     feedRef.push(newPost);
-    return newPost;
   }
 
   saveComment(newComment: string, feed){
