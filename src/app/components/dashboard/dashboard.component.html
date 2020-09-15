@@ -11,12 +11,16 @@
                 </p>
             </mat-card-content>
             <mat-card-actions class="action-buttons">
-                <button mat-button color="primary" [disabled]="!canLike(feed)" (click)="addLike(feed)"><mat-icon>thumb_up_alt</mat-icon> 
-                    <span *ngIf="feed.likesAuthors; else elseBlockLikes"> {{feed.likesAuthors.length}}</span>
-                    <ng-template #elseBlockLikes> 0</ng-template> Likes</button>
-                <button mat-button color="primary" (click)="toggle(feed)"><mat-icon>comment</mat-icon> 
-                    <span *ngIf="feed.comments; else elseBlockComments"> {{feed.comments.length}}</span> 
-                    <ng-template #elseBlockComments> 0</ng-template> Comments</button>
+                <button mat-button color="primary" [disabled]="!canLike(feed)" (click)="addLike(feed)">
+                    <mat-icon>thumb_up_alt</mat-icon> 
+                    <span *ngIf="feed.likesAuthors; else elseBlockLikes">
+                        {{feed.likesAuthors.length}} Likes</span>
+                    <ng-template #elseBlockLikes> 0 Likes</ng-template></button>
+                <button mat-button color="primary" (click)="toggle(feed)">
+                    <mat-icon>comment</mat-icon> 
+                    <span *ngIf="feed.comments; else elseBlockComments"> 
+                        {{feed.comments.length}} Comments</span> 
+                    <ng-template #elseBlockComments> 0 Comments</ng-template></button>
             </mat-card-actions>
             </mat-card>
         <div class="comment-section">
