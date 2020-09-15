@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class DashboardComponent implements OnInit {
 
   mFeeds: Array<any> = [];
-  newComment: string;
+  newComment: Array<any> = [];
   currentUser: any;
 
   constructor(private feedService: FeedService, private authService: AuthService) { 
@@ -38,12 +38,12 @@ export class DashboardComponent implements OnInit {
     feed.show = !feed.show;
   }
 
-  saveComment(feed){
-    if (!this.newComment){
+  saveComment(feed, index){
+    if (!this.newComment[index]){
       return;
     }
-    this.feedService.saveComment(this.newComment, feed);
-    this.newComment = '';
+    this.feedService.saveComment(this.newComment[index], feed);
+    this.newComment[index] = '';
   }
 
   addLike(feed){
