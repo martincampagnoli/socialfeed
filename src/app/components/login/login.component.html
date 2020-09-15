@@ -1,21 +1,22 @@
 <mat-card>
     <mat-card-content>
         <div>
-            <div style="text-align: center">
-                <div class="field-row">
-                    <mat-form-field class="example-full-width">
+            <div class="align-center">
+                <div>
+                    <mat-form-field>
                         <mat-label>Email address</mat-label>
                         <input matInput placeholder="try admin@admin.com" [(ngModel)]="username">
                     </mat-form-field>
                 </div>
-                <div class="field-row">
-                    <mat-form-field class="example-full-width">
+                <div>
+                    <mat-form-field>
                         <mat-label>Password</mat-label>
                         <input matInput type="password" [(ngModel)]="password" placeholder="try 123456">
                     </mat-form-field>
                 </div>
                 <mat-error *ngIf="error">
-                    {{error}}
+                        <mat-icon class="vertical-align">error</mat-icon> 
+                        {{error}}
                 </mat-error>
                 <br>
                 <button mat-button (click)="login(username, password)">Login</button>
