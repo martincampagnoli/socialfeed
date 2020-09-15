@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FeedService } from '../feed.service';
+import { FeedService } from 'src/app/services/feed.service';
 
 @Component({
   selector: 'app-dialog',

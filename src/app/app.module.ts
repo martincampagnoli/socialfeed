@@ -19,8 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DialogComponent } from './dialog/dialog.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 import { FormsModule } from '@angular/forms';
 
 const mat = [
