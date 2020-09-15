@@ -3,7 +3,6 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { formatDate } from '@angular/common';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
-import { dirname } from 'path';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +28,6 @@ export class FeedService {
   }
 
   addPost(content){
-    console.dir(this.currentUser);
     const feedRef = this.db.list('feeds');
     const newPost = {
       "author": this.currentUser.name,

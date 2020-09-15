@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
   }
 
   containsObject(obj, list) {
-    return list.filter( e => e.id === obj.id).length > 0;
+    return list.filter( e => e.uid === obj.uid).length > 0;
   }
 
   toggle(feed) {
