@@ -1,10 +1,9 @@
     <div *ngFor="let feed of mFeeds.slice().reverse()">
-        <div>
             <mat-card class="feed-card slow-feed" >
             <mat-card-header>
                 <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/empty.png)'}" class="feed-header-image"></div>
                 <mat-card-title class="title">{{feed.author}} wrote:</mat-card-title>
-                <mat-card-subtitle>regular user</mat-card-subtitle>
+                <mat-card-subtitle>{{feed.role}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <p>
@@ -17,14 +16,6 @@
                     <span *ngIf="feed.comments"> {{feed.comments.length}}</span> Comments</button>
             </mat-card-actions>
             </mat-card>
-            <mat-card class="feed-card slow-feed" *ngIf="mFeeds.length == 0">
-                <mat-card-content>
-                    <p class="empty-feed">
-                    No news for now. Waiting for any thought to show up...
-                    </p>
-                </mat-card-content>
-            </mat-card>
-        </div>
         <div class="comment-section">
             <mat-list dense *ngIf="feed.show">
                 <mat-list-item *ngFor="let comment of feed.comments" class="comment-item">
@@ -34,11 +25,17 @@
                         <span> {{comment.commentContent}}</span>
                     </p>
                 </mat-list-item>
-                <mat-form-field style="width:90%; margin-left:5%">
+                <mat-form-field style="width:90%; margin-left:5%" *ngIf="currentUser">
                     <mat-label>Leave a comment</mat-label>
-                    <input matInput [(ngModel)]="newComment" placeholder="Press enter to send..." (keyup.enter)="saveComment(feed.uid)">
+                    <input matInput [(ngModel)]="newComment" placeholder="Press enter to send..." (keyup.enter)="saveComment(feed)">
                 </mat-form-field>
             </mat-list>
-            
         </div>
     </div>
+    <mat-card class="feed-card slow-feed" *ngIf="mFeeds.length == 0">
+            <mat-card-content>
+                <p class="empty-feed">
+                No news for now. Waiting for any thought to show up...
+                </p>
+            </mat-card-content>
+    </mat-card>

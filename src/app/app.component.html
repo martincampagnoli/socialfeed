@@ -1,11 +1,13 @@
 <mat-toolbar color="primary">
   <span>Social Feed for M79</span>&nbsp;<mat-icon>people</mat-icon> 
   <span class="feed-spacer"></span>
-  <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>settings</mat-icon></button>
+  <button mat-button *ngIf="getCurrentRoute() === '/login'" (click)="goTo('')"><mat-icon>line_weight</mat-icon></button>
+  <button mat-button *ngIf="!currentUser && getCurrentRoute() !== '/login'" (click)="goTo('login')"><mat-icon>login</mat-icon></button>
+  <button mat-button *ngIf="currentUser" [matMenuTriggerFor]="appMenu"><mat-icon>settings</mat-icon></button>
 </mat-toolbar>
 <mat-menu #appMenu="matMenu">
     <button mat-menu-item (click)="openDialog()"> <mat-icon>post_add</mat-icon>Post something </button>
-    <button mat-menu-item><mat-icon>exit_to_app</mat-icon>Logout</button>
+    <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon>Logout</button>
 </mat-menu>
 
 <router-outlet></router-outlet>

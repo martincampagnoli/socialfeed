@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FeedService } from 'src/app/services/feed.service';
+import { FeedService } from 'src/app/services/feed/feed.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,17 +12,18 @@ export class DashboardComponent implements OnInit {
 
   mFeeds: Array<any> = [];
   newComment: string;
+  currentUser: any;
 
-  constructor(private feedService: FeedService) { }
+  constructor(private feedService: FeedService, private authService: AuthService) { 
+    this.authService.currentUser.subscribe(user => this.currentUser = user);
+  }
 
   ngOnInit(): void {
     this.feedService.getFeeds().subscribe(f => {
-      console.dir(f)
       f = f.filter(e =>  !this.containsObject(e, this.mFeeds) );
 
       f.forEach((v, i) => {
         setTimeout(() => {
-          console.dir(v);
           this.mFeeds.push(v);
         }, i * 2000);
       });
@@ -36,13 +38,12 @@ export class DashboardComponent implements OnInit {
     feed.show = !feed.show;
   }
 
-  saveComment(feedUid){
+  saveComment(feed){
     if (!this.newComment){
       return;
     }
-    console.dir(feedUid);
+    this.feedService.saveComment(this.newComment, feed);
     this.newComment = '';
-    this.feedService.saveComment(this.newComment, feedUid);
   }
 
 

@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 const mat = [
   MatMenuModule,
@@ -33,7 +34,7 @@ const mat = [
   MatListModule,
   MatDialogModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
 ];
 
 const firebaseConfig = {
@@ -50,7 +51,8 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     DashboardComponent,
-    DialogComponent
+    DialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
