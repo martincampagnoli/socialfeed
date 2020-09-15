@@ -33,7 +33,6 @@ export class FeedService {
       "author": this.currentUser.name,
       "role": this.currentUser.role,
       "content": content,
-      "likes": 0,
       "created": this.cValue
     }
     
@@ -63,4 +62,23 @@ export class FeedService {
     }
     feedRef.update(feed.uid, updatedFeed);
   }
+  addLike(feed){
+    const feedRef = this.db.list('feeds');
+    const updatedFeed = {
+      likesAuthors: [],
+    }
+
+    if (!feed.likesAuthors){
+      let likesAuthors = [];
+      likesAuthors.push(this.currentUser.uid);
+      updatedFeed.likesAuthors = likesAuthors;
+      feed.likesAuthors = likesAuthors;
+    }
+    else {
+      feed.likesAuthors.push(this.currentUser.uid);
+      updatedFeed.likesAuthors = feed.likesAuthors;
+    }
+    feedRef.update(feed.uid, updatedFeed);
+  }
+
 }

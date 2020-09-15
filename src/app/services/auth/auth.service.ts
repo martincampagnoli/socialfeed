@@ -36,7 +36,9 @@ export class AuthService {
 
   storeUserInfo(uid: string){
     this.db.object('users/' + uid).valueChanges().subscribe(
-      user => {
+      u => {
+        let user = u as any;
+        user.uid = uid;
         sessionStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
       }

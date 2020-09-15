@@ -46,5 +46,16 @@ export class DashboardComponent implements OnInit {
     this.newComment = '';
   }
 
+  addLike(feed){
+    this.feedService.addLike(feed);
+  }
+
+  canLike(feed){
+    if (!feed.likesAuthors) return true;
+    if (!this.currentUser) return false;
+    if (!feed.likesAuthors.includes(this.currentUser.uid)) return true;
+    return false;
+  }
+
 
 }
