@@ -1,8 +1,19 @@
 # Social Feed
 
-Social text feed app created using Angular and Firebase as backend for storage and authentication.
+Social feed app created using Angular as frontend framework, [Firebase](https://firebase.google.com/) as backend for storage and authentication, and [Angular Material](https://material.angular.io/) for design and styling.
 
+Logged Users are able to create text posts and comment on any of them.
+'Like' functionality is available for logged users as well.
+Guest users can view any post with its comments and 'likes' count but are not able to interact with them.
+Posts run in feed showing up from top to bottom, from oldest to newest.
 
+Test users (username/password)
+
+admin@admin.com/123456
+martin@admin.com/123456
+frey@admin.com/123456
+
+Enjoy!
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
 
