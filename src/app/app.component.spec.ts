@@ -1,16 +1,39 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { AuthService } from './services/auth/auth.service';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { MatMenuModule } from '@angular/material/menu';
+
+const data = { title: "test", description: "testDesc" };
+let currentUserSubject = new BehaviorSubject<any>({});
+const mockAuthService = {
+  currentUser: currentUserSubject.asObservable()
+}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        AngularFireModule,
+        AngularFirestoreModule,
+        MatDialogModule,
+        MatMenuModule
       ],
       declarations: [
         AppComponent
       ],
+      providers:[AngularFirestore,
+        { provide: MatDialogRef, useValue: {} }, 
+        { provide: AuthService, useValue: mockAuthService }, 
+        { provide: MAT_DIALOG_DATA, useValue: data }
+      
+      
+        ]
     }).compileComponents();
   });
 
@@ -26,10 +49,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('socialfeed');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('socialfeed app is running!');
-  });
 });

@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DialogComponent } from './dialog.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FeedService } from 'src/app/services/feed/feed.service';
+
+const data = { title: "test", description: "testDesc" };
+const mockFeedService = {}
 
 describe('DialogComponent', () => {
   let component: DialogComponent;
@@ -8,7 +13,16 @@ describe('DialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogComponent ]
+      imports: [
+        MatDialogModule
+      ],
+      declarations: [
+        DialogComponent
+      ],
+      providers: [
+        { provide: FeedService, useValue: mockFeedService },
+        { provide: MatDialogRef, useValue: {} }, 
+        { provide: MAT_DIALOG_DATA, useValue: data }]
     })
     .compileComponents();
   });
