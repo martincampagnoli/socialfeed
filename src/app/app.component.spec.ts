@@ -8,12 +8,12 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { BehaviorSubject } from 'rxjs';
 import { MatMenuModule } from '@angular/material/menu';
 
-const data = { title: "test", description: "testDesc" };
-let currentUserSubject = new BehaviorSubject<any>({});
+const data = { title: 'test', description: 'testDesc' };
+const currentUserSubject = new BehaviorSubject<any>({});
 const mockAuthService = {
   currentUser: currentUserSubject.asObservable(),
-  logout: () => false,
-}
+  logout: () => false
+};
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -31,13 +31,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      providers:[AngularFirestore,
-        { provide: MatDialogRef, useValue: {} }, 
-        { provide: AuthService, useValue: mockAuthService }, 
-        { provide: MAT_DIALOG_DATA, useValue: data }
-      
-      
-        ]
+      providers: [ AngularFirestore,
+        { provide: MatDialogRef, useValue: {} },
+        { provide: AuthService, useValue: mockAuthService },
+        { provide: MAT_DIALOG_DATA, useValue: data } ]
     }).compileComponents();
   });
   beforeEach(() => {
@@ -54,12 +51,12 @@ describe('AppComponent', () => {
     expect(component.title).toEqual('socialfeed');
   });
   it(`should call auth service method when calling logout method on the component`, () => {
-    spyOn(mockAuthService, "logout");
+    spyOn(mockAuthService, 'logout');
     component.logout();
     expect(mockAuthService.logout).toHaveBeenCalled();
   });
   it(`should go to a default route calling method with empty string while logging out`, () => {
-    spyOn(component, "goTo");
+    spyOn(component, 'goTo');
     component.logout();
     expect(component.goTo).toHaveBeenCalledWith('');
   });

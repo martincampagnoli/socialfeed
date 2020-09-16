@@ -4,7 +4,6 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth/auth.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

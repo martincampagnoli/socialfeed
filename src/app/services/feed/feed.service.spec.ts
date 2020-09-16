@@ -16,10 +16,7 @@ describe('FeedService', () => {
       ],
       declarations: [
       ],
-      providers:[AngularFirestore,AngularFireAuth, AngularFireDatabase
-      
-      
-        ]
+      providers: [ AngularFirestore, AngularFireAuth, AngularFireDatabase ]
     });
     service = TestBed.inject(FeedService);
   });
