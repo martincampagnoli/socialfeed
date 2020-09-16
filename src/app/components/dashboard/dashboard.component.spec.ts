@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 import { FeedService } from 'src/app/services/feed/feed.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { BehaviorSubject, Observable, from } from 'rxjs';
+import { BehaviorSubject, from } from 'rxjs';
 
 let currentUserSubject = new BehaviorSubject<any>({});
 const mockAuthService = {
@@ -61,7 +61,7 @@ describe('DashboardComponent', () => {
   });
   it('should call service method with given parameter', () => {
     let obj = {show: true};
-    spyOn(mockFeedService, "addLike")
+    spyOn(mockFeedService, "addLike");
     component.addLike(obj);
 
     expect(mockFeedService.addLike).toHaveBeenCalled();

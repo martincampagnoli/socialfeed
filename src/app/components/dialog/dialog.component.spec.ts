@@ -5,7 +5,9 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { FeedService } from 'src/app/services/feed/feed.service';
 
 const data = { title: "test", description: "testDesc" };
-const mockFeedService = {}
+const mockFeedService = {
+  addPost: (post) => false
+}
 
 describe('DialogComponent', () => {
   let component: DialogComponent;
@@ -21,7 +23,7 @@ describe('DialogComponent', () => {
       ],
       providers: [
         { provide: FeedService, useValue: mockFeedService },
-        { provide: MatDialogRef, useValue: {} }, 
+        { provide: MatDialogRef, useValue: { open: () => false, close: () => false } }, 
         { provide: MAT_DIALOG_DATA, useValue: data }]
     })
     .compileComponents();
@@ -36,4 +38,13 @@ describe('DialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should call feedservice addpost method with given parameters', () => {
+    component.postMessage = "testing";
+    spyOn(mockFeedService, "addPost");
+    component.save();
+    expect(mockFeedService.addPost).toHaveBeenCalled();
+    expect(mockFeedService.addPost).toHaveBeenCalledWith(component.postMessage);
+    expect(mockFeedService.addPost).toHaveBeenCalledWith("testing");
+  });
 });
+
