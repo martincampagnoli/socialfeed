@@ -16,8 +16,8 @@ export class FeedService {
     this.authService.currentUser.subscribe(user => this.currentUser = user);
   }
 
-  getFeeds() {
-    return this.db.list('feeds').snapshotChanges()
+  getFeed() {
+    return this.db.list('feed').snapshotChanges()
     .pipe(map(action => action
       .map(a => {
         const data:{} = a.payload.val(); 
@@ -28,10 +28,9 @@ export class FeedService {
   }
 
   addPost(content){
-    const feedRef = this.db.list('feeds');
+    const feedRef = this.db.list('feed');
     const newPost = {
       "author": this.currentUser.name,
-      "role": this.currentUser.role,
       "content": content,
       "created": this.cValue
     }
@@ -39,8 +38,8 @@ export class FeedService {
     feedRef.push(newPost);
   }
 
-  saveComment(newComment: string, feed){
-    const feedRef = this.db.list('feeds');
+  saveComment(newComment: string, post){
+    const feedRef = this.db.list('feed');
     const updatedFeed = {
       comments: []
     }
@@ -50,35 +49,35 @@ export class FeedService {
       commentCreated: this.cValue
     };
 
-    if (!feed.comments){
+    if (!post.comments){
       let comments = [];
       comments.push(newCommentObj);
       updatedFeed.comments = comments;
-      feed.comments = comments;
+      post.comments = comments;
     }
     else {
-      feed.comments.push(newCommentObj);
-      updatedFeed.comments = feed.comments;
+      post.comments.push(newCommentObj);
+      updatedFeed.comments = post.comments;
     }
-    feedRef.update(feed.uid, updatedFeed);
+    feedRef.update(post.uid, updatedFeed);
   }
-  addLike(feed){
-    const feedRef = this.db.list('feeds');
+  addLike(post){
+    const feedRef = this.db.list('feed');
     const updatedFeed = {
       likesAuthors: [],
     }
 
-    if (!feed.likesAuthors){
+    if (!post.likesAuthors){
       let likesAuthors = [];
       likesAuthors.push(this.currentUser.uid);
       updatedFeed.likesAuthors = likesAuthors;
-      feed.likesAuthors = likesAuthors;
+      post.likesAuthors = likesAuthors;
     }
     else {
-      feed.likesAuthors.push(this.currentUser.uid);
-      updatedFeed.likesAuthors = feed.likesAuthors;
+      post.likesAuthors.push(this.currentUser.uid);
+      updatedFeed.likesAuthors = post.likesAuthors;
     }
-    feedRef.update(feed.uid, updatedFeed);
+    feedRef.update(post.uid, updatedFeed);
   }
 
 }

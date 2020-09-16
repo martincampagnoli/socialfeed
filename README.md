@@ -1,5 +1,9 @@
 # Social Feed
 
+Social text feed app created using Angular and Firebase as backend for storage and authentication.
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
 
 ## Development server

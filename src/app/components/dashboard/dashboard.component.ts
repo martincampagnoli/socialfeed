@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 
 export class DashboardComponent implements OnInit {
 
-  mFeeds: Array<any> = [];
+  mFeed: Array<any> = [];
   newComment: Array<any> = [];
   currentUser: any;
 
@@ -19,12 +19,12 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.feedService.getFeeds().subscribe(f => {
-      f = f.filter(e =>  !this.containsObject(e, this.mFeeds) );
+    this.feedService.getFeed().subscribe(f => {
+      f = f.filter(e =>  !this.containsObject(e, this.mFeed) );
 
       f.forEach((v, i) => {
         setTimeout(() => {
-          this.mFeeds.push(v);
+          this.mFeed.push(v);
         }, i * 2000);
       });
     })
@@ -38,16 +38,16 @@ export class DashboardComponent implements OnInit {
     feed.show = !feed.show;
   }
 
-  saveComment(feed, index){
+  saveComment(post, index){
     if (!this.newComment[index]){
       return;
     }
-    this.feedService.saveComment(this.newComment[index], feed);
+    this.feedService.saveComment(this.newComment[index], post);
     this.newComment[index] = '';
   }
 
-  addLike(feed){
-    this.feedService.addLike(feed);
+  addLike(post){
+    this.feedService.addLike(post);
   }
 
   canLike(feed){
