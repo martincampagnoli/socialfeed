@@ -1,6 +1,6 @@
 # Social Feed
 
-Social feed app created using Angular as frontend framework, [Firebase](https://firebase.google.com/) as backend for storage and authentication, and [Angular Material](https://material.angular.io/) for design and styling.
+Social feed app created using [Angular](https://angular.io/) as frontend framework, [Firebase](https://firebase.google.com/) as backend for storage and authentication, and [Angular Material](https://material.angular.io/) for design and styling.
 
 Logged Users are able to create text posts and comment on any of them.
 'Like' functionality is available for logged users as well.
