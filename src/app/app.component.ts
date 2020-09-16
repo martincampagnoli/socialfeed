@@ -14,19 +14,19 @@ export class AppComponent {
   title = 'socialfeed';
   post: string;
   currentUser: any;
-  
-  constructor(private dialog: MatDialog, 
+
+  constructor(private dialog: MatDialog,
               private router: Router,
               private authService: AuthService) {
 
     this.authService.currentUser.subscribe(user => this.currentUser = user);
   }
 
-  getCurrentRoute(){
+  getCurrentRoute(): string {
     return this.router.url;
   }
 
-  openDialog() {
+  openDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -35,11 +35,11 @@ export class AppComponent {
     this.dialog.open(DialogComponent, dialogConfig);
   }
 
-  goTo(url: string){
+  goTo(url: string): void {
     this.router.navigate([url]);
   }
 
-  logout(){
+  logout(): void {
     this.authService.logout();
     this.goTo('');
   }

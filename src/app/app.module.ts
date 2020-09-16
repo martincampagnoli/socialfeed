@@ -38,13 +38,13 @@ const mat = [
 ];
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBKWjTby9Joa8gFERbnDbRomcoIpIXNRX8",
-  authDomain: "m79feed.firebaseapp.com",
-  databaseURL: "https://m79feed.firebaseio.com",
-  projectId: "m79feed",
-  storageBucket: "m79feed.appspot.com",
-  messagingSenderId: "612367989184",
-  appId: "1:612367989184:web:e2989b57179283606cf025"
+  apiKey: 'AIzaSyBKWjTby9Joa8gFERbnDbRomcoIpIXNRX8',
+  authDomain: 'm79feed.firebaseapp.com',
+  databaseURL: 'https://m79feed.firebaseio.com',
+  projectId: 'm79feed',
+  storageBucket: 'm79feed.appspot.com',
+  messagingSenderId: '612367989184',
+  appId: '1:612367989184:web:e2989b57179283606cf025'
 };
 
 @NgModule({
@@ -63,7 +63,7 @@ const firebaseConfig = {
     FormsModule,
     ...mat
   ],
-  exports:[...mat],
+  exports: [...mat],
   providers: [],
   bootstrap: [AppComponent]
 })

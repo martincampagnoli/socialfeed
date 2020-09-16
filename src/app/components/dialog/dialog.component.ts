@@ -10,18 +10,15 @@ import { FeedService } from 'src/app/services/feed/feed.service';
 export class DialogComponent {
   postMessage: string;
 
-  constructor(private dialogRef: MatDialogRef<DialogComponent>, private feedService: FeedService) {   
+  constructor(private dialogRef: MatDialogRef<DialogComponent>, private feedService: FeedService) {
   }
 
-  ngOnInit() {
-  }
-
-  save() {
+  save(): void {
       this.feedService.addPost(this.postMessage);
       this.dialogRef.close();
   }
 
-  close() {
+  close(): void {
       this.dialogRef.close();
   }
 }

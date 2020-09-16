@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   newComment: Array<any> = [];
   currentUser: any;
 
-  constructor(private feedService: FeedService, private authService: AuthService) { 
+  constructor(private feedService: FeedService, private authService: AuthService) {
     this.authService.currentUser.subscribe(user => this.currentUser = user);
   }
 
@@ -27,18 +27,19 @@ export class DashboardComponent implements OnInit {
           this.mFeed.push(v);
         }, i * 2000);
       });
-    })
+
+    });
   }
 
-  containsObject(obj, list) {
+  containsObject(obj, list): boolean {
     return list.filter( e => e.uid === obj.uid).length > 0;
   }
 
-  toggle(feed) {
+  toggle(feed): void {
     feed.show = !feed.show;
   }
 
-  saveComment(post, index){
+  saveComment(post, index): void {
     if (!this.newComment[index]){
       return;
     }
@@ -46,16 +47,14 @@ export class DashboardComponent implements OnInit {
     this.newComment[index] = '';
   }
 
-  addLike(post){
+  addLike(post): void {
     this.feedService.addLike(post);
   }
 
-  canLike(feed){
-    if (!this.currentUser) return false;
-    if (!feed.likesAuthors) return true;
-    if (!feed.likesAuthors.includes(this.currentUser.uid)) return true;
+  canLike(feed): boolean{
+    if (!this.currentUser) { return false; }
+    if (!feed.likesAuthors) { return true; }
+    if (!feed.likesAuthors.includes(this.currentUser.uid)) { return true; }
     return false;
   }
-
-
 }

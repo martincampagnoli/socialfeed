@@ -16,41 +16,41 @@ export class FeedService {
     this.authService.currentUser.subscribe(user => this.currentUser = user);
   }
 
-  getFeed() {
+  getFeed(): any {
     return this.db.list('feed').snapshotChanges()
     .pipe(map(action => action
       .map(a => {
-        const data:{} = a.payload.val(); 
-        const uid = a.payload.key; 
-        return {uid, ...data}
+        const data: {} = a.payload.val();
+        const uid = a.payload.key;
+        return { uid, ...data };
       })
     ));
   }
 
-  addPost(content){
+  addPost(content): void{
     const feedRef = this.db.list('feed');
     const newPost = {
-      "author": this.currentUser.name,
-      "content": content,
-      "created": this.cValue
-    }
-    
+      author: this.currentUser.name,
+      content,
+      created: this.cValue
+    };
+
     feedRef.push(newPost);
   }
 
-  saveComment(newComment: string, post){
+  saveComment(newComment: string, post): void{
     const feedRef = this.db.list('feed');
     const updatedFeed = {
       comments: []
-    }
+    };
     const newCommentObj = {
-      commentAuthor: this.currentUser.name, 
-      commentContent: newComment, 
+      commentAuthor: this.currentUser.name,
+      commentContent: newComment,
       commentCreated: this.cValue
     };
 
     if (!post.comments){
-      let comments = [];
+      const comments = [];
       comments.push(newCommentObj);
       updatedFeed.comments = comments;
       post.comments = comments;
@@ -61,14 +61,15 @@ export class FeedService {
     }
     feedRef.update(post.uid, updatedFeed);
   }
-  addLike(post){
+
+  addLike(post): void{
     const feedRef = this.db.list('feed');
     const updatedFeed = {
       likesAuthors: [],
-    }
+    };
 
     if (!post.likesAuthors){
-      let likesAuthors = [];
+      const likesAuthors = [];
       likesAuthors.push(this.currentUser.uid);
       updatedFeed.likesAuthors = likesAuthors;
       post.likesAuthors = likesAuthors;
