@@ -51,8 +51,8 @@ export class DashboardComponent implements OnInit {
   }
 
   canLike(feed){
-    if (!feed.likesAuthors) return true;
     if (!this.currentUser) return false;
+    if (!feed.likesAuthors) return true;
     if (!feed.likesAuthors.includes(this.currentUser.uid)) return true;
     return false;
   }
