@@ -9,9 +9,9 @@ Posts run in feed showing up from top to bottom, from oldest to newest.
 
 Test users (username/password)
 
-admin@admin.com/123456
-martin@admin.com/123456
-frey@admin.com/123456
+admin@admin.com/123456<br/>
+martin@admin.com/123456<br/>
+frey@admin.com/123456<br/>
 
 Enjoy!
 
