@@ -15,6 +15,8 @@ frey@admin.com/123456
 
 Enjoy!
 
+*Tested in Chrome on OSX, for both desktop and mobile (using devTools device mode)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
 
 ## Development server
