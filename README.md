@@ -2,10 +2,10 @@
 
 Social feed app created using [Angular](https://angular.io/) as frontend framework, [Firebase](https://firebase.google.com/) as backend for storage and authentication, and [Angular Material](https://material.angular.io/) for design and styling.
 
-Logged Users are able to create text posts and comment on any of them.
-'Like' functionality is available for logged users as well.
-Guest users can view any post with its comments and 'likes' count but are not able to interact with them.
-Posts run in feed showing up from top to bottom, from oldest to newest.
+Logged Users are able to create text posts and comment on any of them.<br/>
+'Like' functionality is available for logged users as well.<br/>
+Guest users can view any post with its comments and 'likes' count but are not able to interact with them.<br/>
+Posts run in feed showing up from top to bottom, from oldest to newest.<br/>
 
 Test users (username/password)
 
@@ -15,7 +15,7 @@ frey@admin.com/123456<br/>
 
 Enjoy!
 
-*Tested in Chrome on OSX, for both desktop and mobile (using devTools device mode)
+*Tested in Chrome on OSX, for both desktop and mobile (using devTools device mode).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
 
