@@ -35,8 +35,8 @@ export class DashboardComponent implements OnInit {
     return list.filter( e => e.uid === obj.uid).length > 0;
   }
 
-  toggle(feed): void {
-    feed.show = !feed.show;
+  toggle(post): void {
+    post.show = !post.show;
   }
 
   saveComment(post, index): void {
@@ -51,10 +51,10 @@ export class DashboardComponent implements OnInit {
     this.feedService.addLike(post);
   }
 
-  canLike(feed): boolean{
+  canLike(post): boolean{
     if (!this.currentUser) { return false; }
-    if (!feed.likesAuthors) { return true; }
-    if (!feed.likesAuthors.includes(this.currentUser.uid)) { return true; }
+    if (!post.likesAuthors) { return true; }
+    if (!post.likesAuthors.includes(this.currentUser.uid)) { return true; }
     return false;
   }
 }
