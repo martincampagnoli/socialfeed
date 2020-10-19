@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>Social Feed for M79</span>&nbsp;<mat-icon>people</mat-icon>
+  <span>Social Feed</span>&nbsp;<mat-icon>people</mat-icon>
   <span class="feed-spacer"></span>
   <span *ngIf="currentUser" class="mobile-hidden"> Welcome, {{ currentUser.name }}</span>
   <button mat-button *ngIf="getCurrentRoute() === '/login'" (click)="goTo('')"><mat-icon>line_weight</mat-icon></button>
